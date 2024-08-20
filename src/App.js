@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          User-navigation-panel
         </a>
       </header>
     </div>
