@@ -1,43 +1,40 @@
 import React, { useState } from 'react';
 import "./Delivery.css"
-import Pickup from './SelectStop';
-import SelectStop from './SelectStop';
-    const DeliveryDetails = () => {
-      const stopOptions = [
-        { value: 'ukkadam', label: 'ukkadam' },
-        { value: 'kuniyamuthur', label: 'kuniyamuthur' },
-        { value: 'bk pudur', label: 'bk pudur' },
-        { value: 'skcet', label: 'skcet' }
-    ];
+
+import SearchBar from '../SearchBar/SearchBar';
+const locationData = [
+  { id:"ukd", name: 'ukkadam', latitude: 10.985936, longitude: 76.965408 },
+  { id :"kun",name: 'kuniyamuthur', latitude: 10.96324600, longitude: 76.94702200 },
+  { id:"kvp",name: 'kovaipudur perivu', latitude: 10.93676, longitude: 76.951173 }
+];
+const DeliveryDetails = () => {
+  
   const [pickupLocation, setPickupLocation] = useState('');
   const [destination, setDestination] = useState('');
-
-  const handlePickUp = (value) => {
-    setPickupLocation(value);
-  };
-
-  const handleDestination = (value) => {
-    setDestination(value);
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Submit the form data to your backend
-  };
-
   return (
-    <>
-    <h2>Hyper Local Delivery</h2>
-    <div className='delbody'>
-      <div className='head2'><h3>Delivery AtoB</h3></div>
-      <div className='stopab'>
-      <form onSubmit={handleSubmit}>
-      <SelectStop stop={stopOptions} head="Pickup" setPickup={handlePickUp} />
-      <SelectStop stop={stopOptions} head="Destination" setDestination={handleDestination} />
-      <button type="submit" className="btn btn-primary">Submit</button>
-    </form>
+    <div className='HLP-container'>
+      <form className='HLP-form'>
+        <div className='HLP-searchbar-container'>
+          <SearchBar 
+            inputValue={pickupLocation}
+            setInputValue={setPickupLocation}
+            allSuggestions={locationData}
+            attribute='name'
+            label= 'Pick Up Location'
+          />
+          </div>
+        <div className='HLP-searchbar-container'>
+          <SearchBar 
+            inputValue={destination}
+            setInputValue={setDestination}
+            allSuggestions={locationData}
+            attribute='name'
+            label= 'Delivery Location'
+          />
+        </div>
+        <button className='HLP-form-btn'>Submit</button>
+      </form>
     </div>
-    </div>
-    </>
   );
 };
 
