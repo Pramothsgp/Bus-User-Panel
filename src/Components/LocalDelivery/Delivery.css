@@ -1,0 +1,64 @@
+.container {  
+    margin: auto; 
+}
+h2 {
+    text-align: center;
+}
+
+.head2{
+    margin-left: 10%;
+    font-size: large;
+}
+
+.delbody {
+    background-color: bisque;
+    max-width: 100%;
+    padding: 1px;
+    border-radius: 2ch;
+}
+/* Form Group Styles */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Label Styles */
+.form-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Select Styles */
+.form-select {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    appearance: none;
+    background-color: #fff;
+}
+
+/* Optional: Styling for the select dropdown arrow */
+.form-select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23999" d="M2 0L0 2h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 10px 10px;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+.stopab {
+    padding-left: 3vh;
+}
+
