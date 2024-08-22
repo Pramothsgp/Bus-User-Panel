@@ -1,0 +1,32 @@
+.order-list-container {
+    width: 95%;
+    display: flex;
+    max-height: fit-content;
+    justify-content: center;
+}
+
+.order-list-container-layer-2 {
+    width: 95%;
+    max-height: fit-content;
+    border-radius: 10px;
+    box-shadow: -1px 1px 3px #000;
+}
+
+.order-list-container-layer-2 h2 ,
+.order-list-container-layer-2 .no-order,
+.order-list-container-layer-2 .order-item{
+    position: relative;
+    left: 20px;
+}
+
+.order-list-container-layer-2 ul {
+    list-style: none;
+}
+
+.order-list-container-layer-2 .order-item {
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 15px;
+    padding: 10px 40px;
+    box-shadow: 1px 2px 5px #000000;
+}
