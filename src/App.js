@@ -3,15 +3,25 @@ import './App.css';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 import DeliveryDetails from './Components/LocalDelivery/DeliveryDetails';
+import NavBar from './Components/Navigation/NavBar';
+import UserMap from './Components/Map/UserMap';
+import HomeMap from './Components/Map/HomeMap';
+import OrderList from './Components/Orders/OrderList';
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/SignUp" element={<Signup />} />
-        <Route path="/Deliverydetails" element={<DeliveryDetails />} />
-      </Routes>
+      <div className='app-container'>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/SignUp" element={<Signup />} />
+          <Route path="/Deliverydetails" element={<DeliveryDetails />} />
+          <Route path='/map' element={<UserMap />} />  
+          <Route path='/home-map' element={<HomeMap />} />
+          <Route path='/orders' element={<OrderList />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
