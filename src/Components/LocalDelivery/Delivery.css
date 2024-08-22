@@ -41,8 +41,15 @@
     box-sizing: border-box;
   }
 
-  /* From Uiverse.io by adamgiebl */ 
-.HLP-form-btn {
+  .HLP-btn-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    transition: all 5s ease;
+  }
+  
+  .HLP-form-btn {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
