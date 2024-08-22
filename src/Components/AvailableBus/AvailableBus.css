@@ -1,0 +1,21 @@
+.Availablebus-Container{
+    background-color: bisque;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.Availablebus-Container .Available-bus button{
+    margin: 5px;
+    padding: 10px;
+    border: none;    
+    border-radius: 1vh;
+}
+.Availablebus-Container .Available-bus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid #000;
+}
