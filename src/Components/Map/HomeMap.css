@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+.leaflet-control-attribution.leaflet-control {
+    display: none;
+}
+.span {
+    height: 50px; 
+    width: 50px;
+    background: #dddbdb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.span .route-logo {
+    height: 30px;
+    width: 40px;
+}
+
+.map-container-nav {
+    height: 100px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    align-items: center;
+    border: 0.1px solid;
+    border-radius: 20px;
+}
+
+.map-heading {
+    font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  border-radius: 2px;
+  padding: 5px 10px;
+}
