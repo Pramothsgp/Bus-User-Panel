@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log({ email, password, rememberMe });
+
+    const logindata = [{
+      email,
+      password
+    }]
+
+    localStorage.setItem('userdata', JSON.stringify(logindata));
+
+    navigate('/home-map');
   };
 
   return (
