@@ -1,0 +1,11 @@
+.AvailableHlpBus-Container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.Available-Hlp-bus button {
+    padding: 10px 10px;
+    border-radius: 1vh;
+    border: none;
+}

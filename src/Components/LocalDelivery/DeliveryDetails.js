@@ -4,6 +4,7 @@ import "./Delivery.css"
 
 import SearchBar from '../SearchBar/SearchBar';
 import { useNavigate } from 'react-router-dom';
+import AvailHLPBus from '../HLPBuses/AvailHLPBus';
 const locationData = [
   { id:"ukd", name: 'ukkadam', latitude: 10.985936, longitude: 76.965408 },
   { id :"kun",name: 'kuniyamuthur', latitude: 10.96324600, longitude: 76.94702200 },
@@ -18,6 +19,8 @@ const DeliveryDetails = () => {
   const [pickupLocation, setPickupLocation] = useState('');
   const [destination, setDestination] = useState('');
   const [showOrder, setShowOrder] = useState(false);
+  const [showBus,setShowBus] = useState(false);
+  const [bus,setBus] = useState('');
   const navigate = useNavigate();
   useEffect(() => {
 
@@ -42,6 +45,7 @@ const DeliveryDetails = () => {
       pickupLocation,
       destination,
       orderid: temp,
+      bus:bus,
       price: calculatedPrice
     };
 
@@ -88,9 +92,17 @@ const DeliveryDetails = () => {
             onChange={(e) => {
               setweight(e.target.value);
               setShowOrder(false);
+              setShowBus(true);
             }}
           />
         </div>
+        { showBus &&
+        <div className='HLP-Avail-container'>
+          <div className='HLP-Avail-label'>
+            <AvailHLPBus handleBus={setBus}/>
+        </div>
+        </div>
+      }
         <div className='HLP-btn-container'>
         {!showOrder &&
           <button
@@ -111,6 +123,9 @@ const DeliveryDetails = () => {
           </h3>
           <h3>
             Price : {price}
+          </h3>
+          <h3>
+            Bus : {bus}
           </h3>
         </div>
       }

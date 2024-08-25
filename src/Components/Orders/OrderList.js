@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import './OrderList.css'; // You can define your styles in this CSS file
+import React, { useEffect, useState } from 'react'; import './OrderList.css'; // You can define your styles in this CSS file
 
 const OrderList = () => {
   const [orders, setOrders] = useState([]);
@@ -21,6 +20,8 @@ const OrderList = () => {
                 {orders.map((order, index) => (
                     <li key={index} className='order-item'>
                     <p><strong>Order ID:</strong> {order.orderid}</p>
+                    <p><strong>Bus ID:</strong> {order.bus}</p>
+
                     <p><strong>Pickup Location:</strong> {order.pickupLocation}</p>
                     <p><strong>Destination:</strong> {order.destination}</p>
                     <p><strong>Price:</strong> {order.price}</p>
