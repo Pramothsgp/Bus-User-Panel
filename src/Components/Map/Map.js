@@ -8,6 +8,9 @@ import { MdMyLocation } from 'react-icons/md';
 import { FaArrowLeft, FaLocationDot } from 'react-icons/fa6';
 import AvailableBus from '../AvailableBus/AvailableBus';
 import { Link } from 'react-router-dom';
+import ComboBox from '../StopAutoComplete/ComboBox';
+import { db } from '../../Config/Firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 const Routing = ({ pointA, pointB }) => {
   const map = useMap();
@@ -53,49 +56,51 @@ const Routing = ({ pointA, pointB }) => {
   return null;
 };
 
-const Map = ({ locationData ,buslist}) => {
+const Map = () => {
 
-    const [selectedStopA, setSelectedStopA] = useState(null);
+    const [selectedStopA, setSelectedStopA] = useState([null]);
     const [selectedStopB, setSelectedStopB] = useState(null);
-    const handleStopAChange = (e) => {
-      const selectedStop = locationData.find(loc => loc.name === e.target.value);
-        setSelectedStopA(selectedStop);        
-    };
+    const [AB_id,setABId] = useState(null);
     
-    const handleStopBChange = (e) => {
-        const selectedStop = locationData.find(loc => loc.name === e.target.value);
-        setSelectedStopB(selectedStop);        
-    };
+    
+    const FetchAb = async () => {
+        try {
+          const AB_fetch = collection(db, "AtoB");
+          let filtered = await getDocs(AB_fetch);
+          filtered = filtered.docs.forEach(
+            (doc) => {
+              if((doc.data().Source === selectedStopA.stop_id && 
+              doc.data().Destination === selectedStopB.stop_id)||(
+                doc.data().Source === selectedStopB.stop_id && 
+              doc.data().Destination === selectedStopA.stop_id
+              ))
+              setABId(doc.data().AB_id);
+              return;
+            }
+          );
+        } catch (error) {
+          console.error("Error fetching data: ", error);
+        }
+    }
+    
+    if(selectedStopA && selectedStopB)
+      FetchAb();
+  
 
   return (
       <div className='BusRoute-Navigation-container'>
           <Link to= '/home-map'>
               <FaArrowLeft />
               </Link>
-          <div className='location-input-container'> 
+          <div className='location-input-container' style={{display:"grid",gap:"1.5ch"}}>
             <div className='input-container start'>  
                 <MdMyLocation className='start-location'/>
-                <select id='start-location' onChange={handleStopAChange} defaultValue="">
-                    <option value="" disabled>Select a stop</option>
-                    {locationData.map(location => (
-                    <option key={location.id} value={location.name}>
-                        {location.name}
-                    </option>
-                    
-                    ))}
-                </select>
+                <ComboBox stopUpdate = {setSelectedStopA} label={"Stop A"}/>
           </div>
         
         <div className='input-container dest'>
           <FaLocationDot className='dest-location'/>
-                <select id='dest-location' onChange={handleStopBChange} defaultValue="">
-                        <option value="" disabled>Select a stop</option>
-                        {locationData.map(location => (
-                        <option key={location.id} value={location.name}>
-                            {location.name}
-                        </option>
-                        ))}
-                    </select>
+            <ComboBox stopUpdate = {setSelectedStopB} label={"Stop B"}/>
             </div>
           </div>
       {selectedStopA && selectedStopB ? 
@@ -118,10 +123,10 @@ const Map = ({ locationData ,buslist}) => {
         </MapContainer>
               </>)
        }
-          {selectedStopA && selectedStopB &&
+          {AB_id &&
               <div>
               <h3>Available Buses and Seats</h3>
-                  < AvailableBus buslist={buslist} />
+                  < AvailableBus AB_id={AB_id} />
                 </div>
        }
     </div>

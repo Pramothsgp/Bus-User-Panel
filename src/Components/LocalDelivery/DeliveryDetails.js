@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import "./Delivery.css"
-
-
-import SearchBar from '../SearchBar/SearchBar';
 import { useNavigate } from 'react-router-dom';
 import AvailHLPBus from '../HLPBuses/AvailHLPBus';
+import ComboBox from '../StopAutoComplete/ComboBox';
 const locationData = [
   { id:"ukd", name: 'ukkadam', latitude: 10.985936, longitude: 76.965408 },
   { id :"kun",name: 'kuniyamuthur', latitude: 10.96324600, longitude: 76.94702200 },
@@ -62,23 +60,13 @@ const DeliveryDetails = () => {
     <div className='HLP-container' >
       <h1><center>Hyper Local Delivery</center></h1>
       <div className='HLP-form' >
+        <div style={{display:"grid",gap:"3ch"}}>
         <div className='HLP-searchbar-container'>
-          <SearchBar 
-            inputValue={pickupLocation}
-            setInputValue={setPickupLocation}
-            allSuggestions={locationData}
-            attribute='name'
-            label='Pick Up Location'
-          />
+          <ComboBox stopUpdate={setPickupLocation} label={"PickUp Location"}/>
           </div>
         <div className='HLP-searchbar-container'>
-          <SearchBar 
-            inputValue={destination}
-            setInputValue={setDestination}
-            allSuggestions={locationData}
-            attribute='name'
-            label= 'Delivery Location'
-          />
+          <ComboBox stopUpdate={setPickupLocation} label={"Drop Location"}/>
+        </div>
         </div>
         <div className='HLP-weight-container'>
           <div className='HLP-weight-label'>

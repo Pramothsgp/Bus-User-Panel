@@ -1,4 +1,8 @@
-
+.HLP-searchbar-container{
+  display: grid;
+  gap: 1vh;
+  justify-content: center;
+}
 .HLP-container {
     position: absolute;
     top: 60%;
