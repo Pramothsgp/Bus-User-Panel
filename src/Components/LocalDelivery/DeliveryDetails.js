@@ -3,11 +3,8 @@ import "./Delivery.css"
 import { useNavigate } from 'react-router-dom';
 import AvailHLPBus from '../HLPBuses/AvailHLPBus';
 import ComboBox from '../StopAutoComplete/ComboBox';
-const locationData = [
-  { id:"ukd", name: 'ukkadam', latitude: 10.985936, longitude: 76.965408 },
-  { id :"kun",name: 'kuniyamuthur', latitude: 10.96324600, longitude: 76.94702200 },
-  { id:"kvp",name: 'kovaipudur perivu', latitude: 10.93676, longitude: 76.951173 }
-];
+import AvailableBus from '../AvailableBus/AvailableBus';
+
 const num = '1234567890';
 const alpb = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const DeliveryDetails = () => {
@@ -65,7 +62,7 @@ const DeliveryDetails = () => {
           <ComboBox stopUpdate={setPickupLocation} label={"PickUp Location"}/>
           </div>
         <div className='HLP-searchbar-container'>
-          <ComboBox stopUpdate={setPickupLocation} label={"Drop Location"}/>
+          <ComboBox stopUpdate={setDestination} label={"Drop Location"}/>
         </div>
         </div>
         <div className='HLP-weight-container'>
@@ -88,6 +85,7 @@ const DeliveryDetails = () => {
         <div className='HLP-Avail-container'>
           <div className='HLP-Avail-label'>
             <AvailHLPBus handleBus={setBus}/>
+            <AvailableBus/> 
         </div>
         </div>
       }

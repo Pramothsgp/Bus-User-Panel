@@ -7,6 +7,7 @@ import NavBar from './Components/Navigation/NavBar';
 import UserMap from './Components/Map/UserMap';
 import HomeMap from './Components/Map/HomeMap';
 import OrderList from './Components/Orders/OrderList';
+import AddRoute from './AddFireBase/AddRoute';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/map' element={<UserMap />} />  
           <Route path='/home-map' element={<HomeMap />} />
           <Route path='/orders' element={<OrderList />} />
+          <Route path="/AddRoute" element={<AddRoute />} />
         </Routes>
       </div>
     </Router>
