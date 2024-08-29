@@ -63,28 +63,28 @@ const Map = () => {
     const [AB_id,setABId] = useState(null);
     
     
-    const FetchAb = async () => {
-        try {
-          const AB_fetch = collection(db, "AtoB");
-          let filtered = await getDocs(AB_fetch);
-          filtered = filtered.docs.forEach(
-            (doc) => {
-              if((doc.data().Source === selectedStopA.stop_id && 
-              doc.data().Destination === selectedStopB.stop_id)||(
-                doc.data().Source === selectedStopB.stop_id && 
-              doc.data().Destination === selectedStopA.stop_id
-              ))
-              setABId(doc.data().AB_id);
-              return;
-            }
-          );
-        } catch (error) {
-          console.error("Error fetching data: ", error);
-        }
-    }
+    // const FetchAb = async () => {
+    //     try {
+    //       const AB_fetch = collection(db, "AtoB");
+    //       let filtered = await getDocs(AB_fetch);
+    //       filtered = filtered.docs.forEach(
+    //         (doc) => {
+    //           if((doc.data().Source === selectedStopA.stop_id && 
+    //           doc.data().Destination === selectedStopB.stop_id)||(
+    //             doc.data().Source === selectedStopB.stop_id && 
+    //           doc.data().Destination === selectedStopA.stop_id
+    //           ))
+    //           setABId(doc.data().AB_id);
+    //           return;
+    //         }
+    //       );
+    //     } catch (error) {
+    //       console.error("Error fetching data: ", error);
+    //     }
+    // }
     
-    if(selectedStopA && selectedStopB)
-      FetchAb();
+    // if(selectedStopA && selectedStopB)
+    //   FetchAb();
   
 
   return (
@@ -123,10 +123,10 @@ const Map = () => {
         </MapContainer>
               </>)
        }
-          {AB_id &&
+          {selectedStopA.stop_id && selectedStopA.stop_id &&
               <div>
               <h3>Available Buses and Seats</h3>
-                  < AvailableBus AB_id={AB_id} />
+                  < AvailableBus source={selectedStopA.stop_id} destination={selectedStopB.stop_id}/>
                 </div>
        }
     </div>

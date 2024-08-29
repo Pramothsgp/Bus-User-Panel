@@ -4,7 +4,7 @@ import { collection, getDocs, where, query } from 'firebase/firestore';
 import { Button, Box } from '@mui/material';
 import './AvailableBus.css';
 
-const AvailableBus = ({ AB_id }) => {
+const AvailableBus = ({ source,destination }) => {
   const [routes, setRoutes] = useState([]);
   const [bus, setBus] = useState([]);
 
@@ -39,9 +39,10 @@ const AvailableBus = ({ AB_id }) => {
 
       filtered.docs.forEach((doc) => {
         const data = doc.data();
-        if (data.AB_id.includes(AB_id)) {
+        if (data.Stop_list.includes(source) && 
+            data.Stop_list.includes(destination)) {
           matchingRoutes.push({ Route_id: data.Route_id });
-        }
+        } 
       });
       console.log(matchingRoutes);
       setRoutes(matchingRoutes); // Update this to use matchingRoutes
@@ -51,11 +52,11 @@ const AvailableBus = ({ AB_id }) => {
   };
 
   useEffect(() => {
-    if (AB_id) {
-      setBus([]); // Reset bus list whenever AB_id changes
+    if (source && destination) {
+      setBus([]); // Reset bus list whenever source or destination changes
       FetchRoutes();
     }
-  }, [AB_id]);
+  }, [source, destination]);
 
   useEffect(() => {
     if (routes.length > 0) {
