@@ -65,19 +65,23 @@ const AvailableBus = ({ AB_id }) => {
   }, [routes]);
 
   return (
+    
     <Box>
       {bus.length > 0 ? (
-        bus.map((busId, index) => (
-          <Button
-            key={index}
-            variant="outlined"
-            sx={{ margin: 1 }}
-          >
-            {busId}
-          </Button>
-        ))
+        <div>
+          <h3>Available Buses and Seats</h3>
+          {bus.map((busId, index) => (
+            <Button
+              key={index}
+              variant="outlined"
+              sx={{ margin: 1 }}
+            >
+              {busId}
+            </Button>
+          ))}
+          </div>
       ) : (
-      <>
+      <div className='bus-loader'>
             {fetcheddata ? (< div > There are no buses available.</div>
             ) : (
               <Triangle
@@ -90,7 +94,7 @@ const AvailableBus = ({ AB_id }) => {
               wrapperClass=""
               />
             )}
-      </>
+      </div>
       )}
     </Box>
   );

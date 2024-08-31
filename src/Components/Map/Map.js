@@ -92,7 +92,7 @@ const Map = () => {
           <Link to= '/home-map'>
               <FaArrowLeft />
               </Link>
-          <div className='location-input-container' style={{display:"grid",gap:"1.5ch"}}>
+          <div className='location-input-container' >
             <div className='input-container start'>  
                 <MdMyLocation className='start-location'/>
                 <ComboBox stopUpdate = {setSelectedStopA} label={"Stop A"}/>
@@ -105,7 +105,7 @@ const Map = () => {
           </div>
       {selectedStopA && selectedStopB ? 
         (<>
-        <MapContainer center={[selectedStopA.latitude, selectedStopA.longitude]} zoom={13} style={{ height: '500px', width: '100%' }}>
+        <MapContainer center={[selectedStopA.latitude, selectedStopA.longitude]} zoom={13} style={{ height: '70vh', width: '100%' }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a>"
@@ -114,7 +114,7 @@ const Map = () => {
         </MapContainer>
         
               </>) : (<>
-                <MapContainer center={[11.0166292,76.9775246 ]} zoom={10} style={{ height: '500px', width: '100%' }}>
+                <MapContainer center={[11.0166292,76.9775246 ]} zoom={10} style={{ height: '70vh', width: '100%' }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a>"
@@ -125,7 +125,6 @@ const Map = () => {
        }
           {AB_id &&
               <div>
-              <h3>Available Buses and Seats</h3>
                   < AvailableBus AB_id={AB_id} />
                 </div>
        }

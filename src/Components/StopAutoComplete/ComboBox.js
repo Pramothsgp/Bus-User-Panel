@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { db } from '../../Config/Firebase';
 import { collection, getDocs } from 'firebase/firestore';
-
+import './ComboBox.css'
 export default function ComboBox(props) {
     
     const [stopList, setStopList] = React.useState([]);
@@ -43,7 +43,8 @@ export default function ComboBox(props) {
             getOptionLabel={(option) => option.stop_name}
             onChange = {StopChange}
             sx={{ width: 300}}
-            renderInput={(params) => <TextField {...params} label = {props.label} /> }
+            renderInput={(params) => <TextField {...params} label={props.label} />}
+            
         />
     );
 }
