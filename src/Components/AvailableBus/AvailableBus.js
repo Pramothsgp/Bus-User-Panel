@@ -3,10 +3,12 @@ import { db } from '../../Config/Firebase';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 import { Button, Box } from '@mui/material';
 import './AvailableBus.css';
+import { Triangle } from 'react-loader-spinner';
 
 const AvailableBus = ({ source,destination }) => {
   const [routes, setRoutes] = useState([]);
   const [bus, setBus] = useState([]);
+  const [fetcheddata, setFetchedData] = useState(false);
 
   const FetchTrips = async () => {
     try {
@@ -16,7 +18,8 @@ const AvailableBus = ({ source,destination }) => {
       // Query to fetch documents where Route_id matches any value in routeIds
       const q = query(Trip_fetch, where('Route_id', 'in', routeIds));
       const querySnapshot = await getDocs(q);
-
+      
+      setFetchedData(true);
       // Process the fetched documents
       const buss = [];
       querySnapshot.forEach((doc) => {
@@ -61,6 +64,7 @@ const AvailableBus = ({ source,destination }) => {
   useEffect(() => {
     if (routes.length > 0) {
       FetchTrips();
+      setFetchedData(false);
     }
   }, [routes]);
 
@@ -77,7 +81,20 @@ const AvailableBus = ({ source,destination }) => {
           </Button>
         ))
       ) : (
-        <div>There are no buses available.</div>
+      <>
+            {fetcheddata ? (< div > There are no buses available.</div>
+            ) : (
+              <Triangle
+              visible={true}
+              height="80"
+              width="80"
+              color="#4fa94d"
+              ariaLabel="triangle-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              />
+            )}
+      </>
       )}
     </Box>
   );

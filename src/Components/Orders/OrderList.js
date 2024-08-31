@@ -22,8 +22,8 @@ const OrderList = () => {
                     <p><strong>Order ID:</strong> {order.orderid}</p>
                     <p><strong>Bus ID:</strong> {order.bus}</p>
 
-                    <p><strong>Pickup Location:</strong> {order.pickupLocation}</p>
-                    <p><strong>Destination:</strong> {order.destination}</p>
+                    <p><strong>Pickup Location:</strong> {order.pickupLocation.stop_id}</p>
+                    <p><strong>Destination:</strong> {order.destination.stop_id}</p>
                     <p><strong>Price:</strong> {order.price}</p>
                     </li>
                 ))}

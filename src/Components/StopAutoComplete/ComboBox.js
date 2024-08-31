@@ -33,7 +33,7 @@ export default function ComboBox(props) {
     const StopChange= (event, value) => {
 
         props.stopUpdate(value);
-        //console.log('Selected Stop', value);
+        console.log('Selected Stop', value);
     }
 
     return (

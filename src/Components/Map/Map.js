@@ -58,9 +58,8 @@ const Routing = ({ pointA, pointB }) => {
 
 const Map = () => {
 
-    const [selectedStopA, setSelectedStopA] = useState([null]);
+    const [selectedStopA, setSelectedStopA] = useState(null);
     const [selectedStopB, setSelectedStopB] = useState(null);
-    const [AB_id,setABId] = useState(null);
     
     
     // const FetchAb = async () => {
@@ -123,7 +122,7 @@ const Map = () => {
         </MapContainer>
               </>)
        }
-          {selectedStopA.stop_id && selectedStopA.stop_id &&
+          {selectedStopA && selectedStopB &&
               <div>
               <h3>Available Buses and Seats</h3>
                   < AvailableBus source={selectedStopA.stop_id} destination={selectedStopB.stop_id}/>
