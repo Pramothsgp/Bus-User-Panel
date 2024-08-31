@@ -124,12 +124,11 @@ const Map = () => {
        }
           {selectedStopA && selectedStopB &&
               <div>
-<<<<<<< HEAD
+
               <h3>Available Buses and Seats</h3>
                   < AvailableBus source={selectedStopA.stop_id} destination={selectedStopB.stop_id}/>
-=======
+
                   < AvailableBus AB_id={AB_id} />
->>>>>>> ebb04acfc41215c81fb1569ff2d46c80d9a935d9
                 </div>
        }
     </div>
