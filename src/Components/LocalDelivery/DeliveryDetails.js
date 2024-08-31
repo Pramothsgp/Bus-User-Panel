@@ -17,6 +17,8 @@ const DeliveryDetails = () => {
   const [showOrder, setShowOrder] = useState(false);
   const [showBus, setShowBus] = useState(false);
   const [bus, setBus] = useState("");
+  const [length, setLength] = useState();
+  const [breadth, setBreadth] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const DeliveryDetails = () => {
       temp += num[Math.floor(Math.random() * 10)];
     }
 
-    const calculatedPrice = Math.round(weight * 2.76 * 100) / 100;
+    const calculatedPrice = Math.round(weight * 0.76 * 100 * (length+breadth)/100 ) / 100;
     setOrderid(temp);
     setPrice(calculatedPrice);
     setShowOrder(true);
@@ -78,12 +80,12 @@ const DeliveryDetails = () => {
         </div>
         <div className="HLP-weight-container">
           <div className="HLP-weight-label">
-            <label htmlFor="weight-input">Enter Weight</label>
+            {/* <label htmlFor="weight-input">max: 80kg</label> */}
           </div>
           <input
             id="weight-input"
             type="number"
-            placeholder="Enter Weight"
+            placeholder="Enter Weight (Max : 80 Kg)"
             required
             onChange={(e) => {
               setWeight(e.target.value);
@@ -91,6 +93,30 @@ const DeliveryDetails = () => {
               setShowBus(true);
             }}
           />
+        </div>
+        <div className='dimension-container'>
+          <div className="length">
+            <input
+              type="number"
+              placeholder="Length"
+              onChange={(e) => {
+                setLength(e.target.value);
+                setShowOrder(false);
+                setShowBus(true);
+              }}
+            />
+          </div>
+          <div className="breadth">
+            <input
+              type="number"
+              placeholder="Breadth"
+              onChange={(e) => {
+                setBreadth(e.target.value);
+                setShowOrder(false);
+                setShowBus(true);
+              }}
+            />
+          </div>
         </div>
 
         {pickupLocation?.stop_id && destination?.stop_id && (
