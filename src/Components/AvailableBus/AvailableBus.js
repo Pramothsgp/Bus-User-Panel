@@ -9,7 +9,10 @@ const AvailableBus = ({ source,destination }) => {
   const [routes, setRoutes] = useState([]);
   const [bus, setBus] = useState([]);
   const [fetcheddata, setFetchedData] = useState(false);
+<<<<<<< HEAD
 
+=======
+>>>>>>> ebb04acfc41215c81fb1569ff2d46c80d9a935d9
   const FetchTrips = async () => {
     try {
       const routeIds = routes.map(route => route.Route_id); // Extract Route_id values
@@ -18,7 +21,10 @@ const AvailableBus = ({ source,destination }) => {
       // Query to fetch documents where Route_id matches any value in routeIds
       const q = query(Trip_fetch, where('Route_id', 'in', routeIds));
       const querySnapshot = await getDocs(q);
+<<<<<<< HEAD
       
+=======
+>>>>>>> ebb04acfc41215c81fb1569ff2d46c80d9a935d9
       setFetchedData(true);
       // Process the fetched documents
       const buss = [];
@@ -69,19 +75,27 @@ const AvailableBus = ({ source,destination }) => {
   }, [routes]);
 
   return (
+    
     <Box>
       {bus.length > 0 ? (
-        bus.map((busId, index) => (
-          <Button
-            key={index}
-            variant="outlined"
-            sx={{ margin: 1 }}
-          >
-            {busId}
-          </Button>
-        ))
+        <div>
+          <h3>Available Buses and Seats</h3>
+          {bus.map((busId, index) => (
+            <Button
+              key={index}
+              variant="outlined"
+              sx={{ margin: 1 }}
+            >
+              {busId}
+            </Button>
+          ))}
+          </div>
       ) : (
+<<<<<<< HEAD
       <>
+=======
+      <div className='bus-loader'>
+>>>>>>> ebb04acfc41215c81fb1569ff2d46c80d9a935d9
             {fetcheddata ? (< div > There are no buses available.</div>
             ) : (
               <Triangle
@@ -94,7 +108,11 @@ const AvailableBus = ({ source,destination }) => {
               wrapperClass=""
               />
             )}
+<<<<<<< HEAD
       </>
+=======
+      </div>
+>>>>>>> ebb04acfc41215c81fb1569ff2d46c80d9a935d9
       )}
     </Box>
   );

@@ -10,10 +10,10 @@
 }
 
 .location-input-container {
-    background: #e2e0e0;
+    background: #f3d5ac;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     row-gap: 10px;
     padding: 10px;
@@ -25,6 +25,8 @@
     align-items: center;
     padding: 5px 10px ;
     border-radius: 5px;
+    height: 50px;
+    padding-top: 15px;
 }
 .input-container select{
     border: none;
@@ -35,9 +37,16 @@
 
 /* #start-location option:hover {
     
-    background: #d9b5b5;
+background: #d9b5b5;
 }
 #dest-location option:hover {
     
-    background: #d9b5b5;
+background: #d9b5b5;
 } */
+@media screen and (min-width:720px) {
+    .location-input-container{
+        flex-direction: row;
+        column-gap: 10px;
+        /* display: none; */
+    }
+} 
