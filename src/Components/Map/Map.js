@@ -81,7 +81,7 @@ const Map = () => {
           <MapContainer
             center={[selectedStopA.latitude, selectedStopA.longitude]}
             zoom={13}
-            style={{ height: "70vh", width: "100%" }}
+            style={{ height: "60vh", width: "100%" }}
           >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -95,7 +95,7 @@ const Map = () => {
           <MapContainer
             center={[11.0166292, 76.9775246]}
             zoom={10}
-            style={{ height: "70vh", width: "100%" }}
+            style={{ height: "60vh", width: "100%" }}
           >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

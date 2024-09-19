@@ -15,7 +15,7 @@ const HomeMap = () => {
               </h1>
             </div>
         
-          <MapContainer center={[11.0166292, 76.9775246]} zoom={8} style={{height:'800px' , width:'100%',zIndex:0}} className='home-map-container'>
+          <MapContainer center={[11.0166292, 76.9775246]} zoom={9} style={{height:'600px' , width:'100%',zIndex:0}} className='home-map-container'>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a>"
